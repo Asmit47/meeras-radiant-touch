@@ -13,12 +13,12 @@ const HeroSection = () => {
     // Process logo to remove background
     const processLogo = async () => {
       try {
-        const processedUrl = await processLogoBackground("/lovable-uploads/00cc804b-1b3f-4e1e-9ecc-c2659e710b5f.png");
+        const processedUrl = await processLogoBackground("/lovable-uploads/32ca6103-2c56-4948-9f96-1362cf1b8305.png");
         setProcessedLogoUrl(processedUrl);
       } catch (error) {
         console.error("Failed to process logo:", error);
         // Fallback to original logo
-        setProcessedLogoUrl("/lovable-uploads/00cc804b-1b3f-4e1e-9ecc-c2659e710b5f.png");
+        setProcessedLogoUrl("/lovable-uploads/32ca6103-2c56-4948-9f96-1362cf1b8305.png");
       }
     };
     

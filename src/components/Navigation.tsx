@@ -31,7 +31,7 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <img 
-              src="/lovable-uploads/00cc804b-1b3f-4e1e-9ecc-c2659e710b5f.png" 
+              src="/lovable-uploads/32ca6103-2c56-4948-9f96-1362cf1b8305.png" 
               alt="Meera's Jewelry Boutique"
               className="h-10 sm:h-12 w-auto"
             />

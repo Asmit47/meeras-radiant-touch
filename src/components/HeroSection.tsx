@@ -1,12 +1,28 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sparkles, MessageCircle, ArrowDown } from "lucide-react";
+import { processLogoBackground } from "@/utils/backgroundRemoval";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
+  const [processedLogoUrl, setProcessedLogoUrl] = useState<string | null>(null);
 
   useEffect(() => {
     setIsVisible(true);
+    
+    // Process logo to remove background
+    const processLogo = async () => {
+      try {
+        const processedUrl = await processLogoBackground("/lovable-uploads/00cc804b-1b3f-4e1e-9ecc-c2659e710b5f.png");
+        setProcessedLogoUrl(processedUrl);
+      } catch (error) {
+        console.error("Failed to process logo:", error);
+        // Fallback to original logo
+        setProcessedLogoUrl("/lovable-uploads/00cc804b-1b3f-4e1e-9ecc-c2659e710b5f.png");
+      }
+    };
+    
+    processLogo();
   }, []);
 
   const handleWhatsApp = () => {
@@ -36,11 +52,13 @@ const HeroSection = () => {
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
         {/* Logo */}
         <div className={`mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <img 
-            src="/lovable-uploads/00cc804b-1b3f-4e1e-9ecc-c2659e710b5f.png"
-            alt="Meera's Jewelry Boutique"
-            className="h-24 sm:h-32 md:h-40 w-auto mx-auto mb-6"
-          />
+          {processedLogoUrl && (
+            <img 
+              src={processedLogoUrl}
+              alt="Meera's Jewelry Boutique"
+              className="h-32 sm:h-40 md:h-48 lg:h-56 w-auto mx-auto mb-6"
+            />
+          )}
         </div>
 
         {/* Main heading */}

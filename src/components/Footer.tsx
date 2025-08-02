@@ -19,7 +19,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <img 
-              src="/lovable-uploads/c78aae01-a8d0-491b-b009-ef563c995f0e.png"
+              src="/lovable-uploads/00cc804b-1b3f-4e1e-9ecc-c2659e710b5f.png"
               alt="Meera's Jewelry Boutique"
               className="h-16 w-auto mb-4 brightness-0 invert"
             />

@@ -37,7 +37,7 @@ const HeroSection = () => {
         {/* Logo */}
         <div className={`mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <img 
-            src="/lovable-uploads/c78aae01-a8d0-491b-b009-ef563c995f0e.png"
+            src="/lovable-uploads/00cc804b-1b3f-4e1e-9ecc-c2659e710b5f.png"
             alt="Meera's Jewelry Boutique"
             className="h-24 sm:h-32 md:h-40 w-auto mx-auto mb-6"
           />

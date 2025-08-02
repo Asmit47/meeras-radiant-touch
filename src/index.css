@@ -2,41 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Meera's Jewelry Boutique Design System - Premium & Elegant
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base colors - Warm cream and soft whites */
+    --background: 25 100% 98%;
+    --foreground: 15 25% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card and surface colors */
+    --card: 25 50% 97%;
+    --card-foreground: 15 25% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 25 100% 98%;
+    --popover-foreground: 15 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Rose gold inspired */
+    --primary: 15 35% 25%;
+    --primary-foreground: 25 100% 98%;
+    --primary-rose: 15 65% 75%;
+    --primary-gold: 35 85% 85%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Soft cream tones */
+    --secondary: 25 30% 92%;
+    --secondary-foreground: 15 25% 25%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted - Elegant grays */
+    --muted: 20 15% 90%;
+    --muted-foreground: 15 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Warm highlights */
+    --accent: 35 45% 88%;
+    --accent-foreground: 15 25% 25%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status colors */
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 25 100% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Interactive elements */
+    --border: 25 20% 88%;
+    --input: 25 20% 90%;
+    --ring: 15 35% 25%;
 
-    --radius: 0.5rem;
+    /* Premium design tokens */
+    --radius: 0.75rem;
+    
+    /* Gradients for premium feel */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary-rose)), hsl(var(--primary-gold)));
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--secondary)));
+    --gradient-accent: linear-gradient(45deg, hsl(var(--accent)), hsl(var(--primary-gold)));
+    
+    /* Shadows for depth */
+    --shadow-elegant: 0 10px 25px -5px hsl(var(--primary) / 0.1);
+    --shadow-soft: 0 4px 15px -3px hsl(var(--primary) / 0.08);
+    --shadow-card: 0 8px 20px -6px hsl(var(--primary) / 0.12);
+    
+    /* Typography scale */
+    --font-display: "Playfair Display", serif;
+    --font-body: "Inter", sans-serif;
+    
+    /* Animation timing */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +129,53 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  /* Premium button variants */
+  .btn-elegant {
+    @apply bg-gradient-to-r from-primary-rose to-primary-gold text-primary-foreground 
+           px-8 py-4 rounded-lg shadow-soft hover:shadow-elegant 
+           transition-all duration-300 transform hover:-translate-y-1;
+  }
+  
+  .btn-outline-elegant {
+    @apply border-2 border-primary text-primary bg-transparent 
+           px-8 py-4 rounded-lg hover:bg-primary hover:text-primary-foreground
+           transition-all duration-300;
+  }
+  
+  /* Card styles */
+  .card-elegant {
+    @apply bg-card rounded-xl shadow-card border border-border/50 
+           backdrop-blur-sm hover:shadow-elegant transition-all duration-300;
+  }
+  
+  /* Animation utilities */
+  .fade-in-up {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+  
+  .fade-in-up.animate {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-2;
+  }
+  
+  /* Jewelry-specific gradients */
+  .gradient-gold {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-subtle {
+    background: var(--gradient-subtle);
   }
 }

@@ -50,17 +50,6 @@ const HeroSection = () => {
       </div>
 
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-        {/* Logo */}
-        <div className={`mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          {processedLogoUrl && (
-            <img 
-              src={processedLogoUrl}
-              alt="Meera's Jewelry Boutique"
-              className="h-32 sm:h-40 md:h-48 lg:h-56 w-auto mx-auto mb-6"
-            />
-          )}
-        </div>
-
         {/* Main heading */}
         <h1 className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-foreground mb-6 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           Handcrafted

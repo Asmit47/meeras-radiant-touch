@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X, Home, Image, BookOpen, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MenuBar } from "@/components/ui/glow-menu";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,8 +21,45 @@ const Navigation = () => {
     setIsOpen(false);
   };
 
-  const handleWhatsApp = () => {
-    window.open("https://wa.me/1234567890?text=Hello! I'm interested in your jewelry collection.", "_blank");
+  const [activeItem, setActiveItem] = useState<string>("Home");
+
+  const menuItems = [
+    {
+      icon: Home,
+      label: "Home",
+      href: "#home",
+      gradient: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)",
+      iconColor: "text-blue-500",
+    },
+    {
+      icon: Image,
+      label: "Gallery",
+      href: "#gallery",
+      gradient: "radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)",
+      iconColor: "text-orange-500",
+    },
+    {
+      icon: BookOpen,
+      label: "Story",
+      href: "#story",
+      gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)",
+      iconColor: "text-green-500",
+    },
+    {
+      icon: Mail,
+      label: "Contact",
+      href: "#contact",
+      gradient: "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
+      iconColor: "text-red-500",
+    },
+  ];
+
+  const handleMenuClick = (label: string) => {
+    setActiveItem(label);
+    const menuItem = menuItems.find(item => item.label === label);
+    if (menuItem) {
+      scrollToSection(menuItem.href);
+    }
   };
 
   return (
@@ -50,26 +88,17 @@ const Navigation = () => {
             ))}
           </div>
 
-          {/* WhatsApp Button - Desktop */}
+          {/* Glow Menu - Desktop */}
           <div className="hidden md:flex">
-            <Button
-              onClick={handleWhatsApp}
-              className="btn-elegant flex items-center gap-2"
-            >
-              <MessageCircle className="w-4 h-4" />
-              WhatsApp
-            </Button>
+            <MenuBar
+              items={menuItems}
+              activeItem={activeItem}
+              onItemClick={handleMenuClick}
+            />
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center gap-3">
-            <Button
-              onClick={handleWhatsApp}
-              size="sm"
-              className="btn-elegant flex items-center gap-1 px-3 py-2"
-            >
-              <MessageCircle className="w-4 h-4" />
-            </Button>
+          <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-foreground hover:text-primary-rose transition-colors"

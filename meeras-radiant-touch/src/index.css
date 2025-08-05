@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Meera's Jewelry Boutique Design System - Premium Rose Gold
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* New Color Palette */
+    --background: 15 60% 95%; /* Rose Gold #e8b09d */
+    --foreground: 0 0% 0%; /* Black text */
+
+    /* Card and surface colors */
+    --card: 210 20% 96%; /* White #ebf0f2 */
+    --card-foreground: 0 0% 0%;
+
+    --popover: 210 20% 96%; /* White #ebf0f2 */
+    --popover-foreground: 0 0% 0%;
+
+    /* Primary - Rose Gold */
+    --primary: 15 60% 75%; /* Rose Gold #e8b09d */
+    --primary-foreground: 0 0% 0%; /* Black text */
+    --primary-rose: 15 60% 75%; /* Rose Gold #e8b09d */
+    --primary-gold: 15 60% 75%; /* Rose Gold #e8b09d */
+
+    /* Secondary - Grey */
+    --secondary: 0 0% 83%; /* Grey #d3d2d3 */
+    --secondary-foreground: 0 0% 0%;
+
+    /* Muted - Light Grey */
+    --muted: 0 0% 90%;
+    --muted-foreground: 0 0% 40%;
+
+    /* Accent - Rose Gold */
+    --accent: 15 60% 75%; /* Rose Gold #e8b09d */
+    --accent-foreground: 0 0% 0%;
+
+    /* Status colors */
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 210 20% 96%;
+
+    /* Interactive elements */
+    --border: 0 0% 83%; /* Grey #d3d2d3 */
+    --input: 210 20% 96%; /* White #ebf0f2 */
+    --ring: 15 60% 75%; /* Rose Gold #e8b09d */
+
+    /* Premium design tokens */
+    --radius: 0.75rem;
+    
+    /* Gradients for premium feel */
+    --gradient-primary: linear-gradient(135deg, hsl(15 60% 75%), hsl(15 60% 85%));
+    --gradient-subtle: linear-gradient(180deg, hsl(15 60% 95%), hsl(210 20% 96%));
+    --gradient-accent: linear-gradient(45deg, hsl(210 20% 96%), hsl(15 60% 75%));
+    
+    /* Shadows for depth */
+    --shadow-elegant: 0 10px 25px -5px hsl(15 60% 75% / 0.15);
+    --shadow-soft: 0 4px 15px -3px hsl(15 60% 75% / 0.1);
+    --shadow-card: 0 8px 20px -6px hsl(15 60% 75% / 0.12);
+    
+    /* Typography scale */
+    --font-display: "Playfair Display", serif;
+    --font-body: "Inter", sans-serif;
+    
+    /* Animation timing */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 210 20% 96%;
+    --sidebar-foreground: 0 0% 0%;
+    --sidebar-primary: 15 60% 75%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 90%;
+    --sidebar-accent-foreground: 0 0% 0%;
+    --sidebar-border: 0 0% 83%;
+    --sidebar-ring: 15 60% 75%;
+  }
+
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 210 20% 96%;
+
+    --card: 0 0% 15%;
+    --card-foreground: 210 20% 96%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 210 20% 96%;
+
+    --primary: 15 60% 75%; /* Rose Gold #e8b09d */
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 210 20% 96%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 70%;
+
+    --accent: 0 0% 20%;
+    --accent-foreground: 210 20% 96%;
+
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 210 20% 96%;
+
+    --border: 0 0% 25%;
+    --input: 0 0% 20%;
+    --ring: 15 60% 75%;
+    
+    --sidebar-background: 0 0% 15%;
+    --sidebar-foreground: 210 20% 96%;
+    --sidebar-primary: 15 60% 75%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 25%;
+    --sidebar-accent-foreground: 210 20% 96%;
+    --sidebar-border: 0 0% 25%;
+    --sidebar-ring: 15 60% 75%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  /* Premium button variants */
+  .btn-elegant {
+    @apply bg-gradient-to-r from-primary-rose to-primary-gold text-foreground 
+           px-8 py-4 rounded-lg shadow-soft hover:shadow-elegant 
+           transition-all duration-300 transform hover:-translate-y-1;
+  }
+  
+  .btn-outline-elegant {
+    @apply border-2 border-primary text-primary bg-transparent 
+           px-8 py-4 rounded-lg hover:bg-primary hover:text-foreground
+           transition-all duration-300;
+  }
+  
+  /* Card styles */
+  .card-elegant {
+    @apply bg-card rounded-xl shadow-card border border-border/50 
+           backdrop-blur-sm hover:shadow-elegant transition-all duration-300;
+  }
+  
+  /* Animation utilities */
+  .fade-in-up {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+  
+  .fade-in-up.animate {
+    @apply opacity-100 translate-y-0;
+  }
+  
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-2;
+  }
+  
+  /* Jewelry-specific gradients */
+  .gradient-gold {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+}

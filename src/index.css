@@ -178,4 +178,35 @@ All colors MUST be HSL.
   .gradient-subtle {
     background: var(--gradient-subtle);
   }
+
+  /* Premium animated title shine */
+  .text-shine {
+    background-image: linear-gradient(90deg, hsl(var(--foreground)) 0%, hsl(var(--primary)) 50%, hsl(var(--foreground)) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% 100%;
+    animation: title-shine 4s ease-in-out infinite;
+  }
+  
+  @keyframes title-shine {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Hero aurora backdrop */
+  .hero-aurora {
+    background:
+      radial-gradient(60% 40% at 20% 20%, hsl(var(--primary) / 0.25), transparent 60%),
+      radial-gradient(50% 40% at 80% 30%, hsl(var(--foreground) / 0.05), transparent 60%),
+      radial-gradient(40% 60% at 50% 80%, hsl(var(--primary) / 0.15), transparent 60%);
+    filter: blur(40px);
+    animation: aurora-move 12s ease-in-out infinite alternate;
+  }
+
+  @keyframes aurora-move {
+    0% { transform: translateY(0) translateX(0); opacity: 0.6; }
+    100% { transform: translateY(-10px) translateX(10px); opacity: 0.9; }
+  }
 }

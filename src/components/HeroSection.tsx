@@ -1,33 +1,15 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Sparkles, MessageCircle, ArrowDown } from "lucide-react";
-import { processLogoBackground } from "@/utils/backgroundRemoval";
+import { Sparkles } from "lucide-react";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [processedLogoUrl, setProcessedLogoUrl] = useState<string | null>(null);
+  
 
   useEffect(() => {
     setIsVisible(true);
-    
-    // Process logo to remove background
-    const processLogo = async () => {
-      try {
-        const processedUrl = await processLogoBackground("/lovable-uploads/32ca6103-2c56-4948-9f96-1362cf1b8305.png");
-        setProcessedLogoUrl(processedUrl);
-      } catch (error) {
-        console.error("Failed to process logo:", error);
-        // Fallback to original logo
-        setProcessedLogoUrl("/lovable-uploads/32ca6103-2c56-4948-9f96-1362cf1b8305.png");
-      }
-    };
-    
-    processLogo();
   }, []);
 
-  const handleWhatsApp = () => {
-    window.open("https://wa.me/1234567890?text=Hello! I'm interested in your jewelry collection.", "_blank");
-  };
 
   const scrollToGallery = () => {
     const element = document.querySelector("#gallery");
@@ -40,6 +22,7 @@ const HeroSection = () => {
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background gradient */}
       <div className="absolute inset-0 gradient-subtle"></div>
+      <div className="absolute inset-0 hero-aurora pointer-events-none"></div>
       
       {/* Decorative elements */}
       <div className="absolute top-20 left-10 opacity-10">
@@ -53,7 +36,7 @@ const HeroSection = () => {
         {/* Main heading */}
         <h1 className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-display font-bold text-foreground mb-6 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           Handcrafted
-          <span className="block text-primary-rose">Elegance</span>
+          <span className="block text-shine">Elegance</span>
         </h1>
 
         {/* Subtitle */}
@@ -70,27 +53,8 @@ const HeroSection = () => {
           >
             Explore Collection
           </Button>
-          <Button
-            onClick={handleWhatsApp}
-            variant="outline"
-            size="lg"
-            className="btn-outline-elegant w-full sm:w-auto flex items-center gap-2"
-          >
-            <MessageCircle className="w-5 h-5" />
-            Chat with Us
-          </Button>
         </div>
 
-        {/* Scroll indicator */}
-        <div className={`transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <button
-            onClick={scrollToGallery}
-            className="text-muted-foreground hover:text-primary-rose transition-colors duration-300 flex flex-col items-center gap-2 mx-auto"
-          >
-            <span className="text-sm font-medium">Discover More</span>
-            <ArrowDown className="w-5 h-5 animate-gentle-bounce" />
-          </button>
-        </div>
       </div>
 
       {/* Mobile optimized spacing */}

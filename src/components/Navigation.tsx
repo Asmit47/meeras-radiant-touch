@@ -1,7 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Home, Image, BookOpen, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { MenuBar } from "@/components/ui/glow-menu";
+import { Menu, X } from "lucide-react";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,62 +19,22 @@ const Navigation = () => {
     setIsOpen(false);
   };
 
-  const [activeItem, setActiveItem] = useState<string>("Home");
-
-  const menuItems = [
-    {
-      icon: Home,
-      label: "Home",
-      href: "#home",
-      gradient: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)",
-      iconColor: "text-blue-500",
-    },
-    {
-      icon: Image,
-      label: "Gallery",
-      href: "#gallery",
-      gradient: "radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)",
-      iconColor: "text-orange-500",
-    },
-    {
-      icon: BookOpen,
-      label: "Story",
-      href: "#story",
-      gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)",
-      iconColor: "text-green-500",
-    },
-    {
-      icon: Mail,
-      label: "Contact",
-      href: "#contact",
-      gradient: "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
-      iconColor: "text-red-500",
-    },
-  ];
-
-  const handleMenuClick = (label: string) => {
-    setActiveItem(label);
-    const menuItem = menuItems.find(item => item.label === label);
-    if (menuItem) {
-      scrollToSection(menuItem.href);
-    }
-  };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20 sm:h-24 md:h-28">
+        <div className="flex justify-between items-center h-10 sm:h-12 md:h-14">
           {/* Logo */}
           <div className="flex-shrink-0">
             <img 
               src="/lovable-uploads/32ca6103-2c56-4948-9f96-1362cf1b8305.png" 
               alt="Meera's Jewelry Boutique"
-              className="h-16 sm:h-20 md:h-24 w-auto"
+              className="h-20 sm:h-24 md:h-32 w-auto"
             />
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8 ml-auto">
             {navItems.map((item) => (
               <button
                 key={item.label}
@@ -86,15 +44,6 @@ const Navigation = () => {
                 {item.label}
               </button>
             ))}
-          </div>
-
-          {/* Glow Menu - Desktop */}
-          <div className="hidden md:flex">
-            <MenuBar
-              items={menuItems}
-              activeItem={activeItem}
-              onItemClick={handleMenuClick}
-            />
           </div>
 
           {/* Mobile menu button */}
